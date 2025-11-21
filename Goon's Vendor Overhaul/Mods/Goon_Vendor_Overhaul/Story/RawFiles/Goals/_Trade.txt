@@ -52,21 +52,26 @@ NOT DB_ItemsCleared(_Npc);
 
 //Restock on long rest
 PROC
-PROC_LongRest()
+// Goon's Vendor Overhaul start
+// PROC_LongRest()
+PROC_LongRest_Player((CHARACTER)_Player, 1)
+// Goon's Vendor Overhaul end
 AND
 DB_TradeTreasureGeneratedSinceLongRest(_Trader)
 THEN
 NOT DB_TradeTreasureGeneratedSinceLongRest(_Trader);
 
 //Restock on level-up (temporary until levelling up is only supported during long rest)
-IF
-LeveledUp(_Player)
-AND
-DB_Players(_Player)
-AND
-DB_TradeTreasureGeneratedSinceLongRest(_Trader)
-THEN
-NOT DB_TradeTreasureGeneratedSinceLongRest(_Trader);
+// Goon's Vendor Overhaul start
+// IF
+// LeveledUp(_Player)
+// AND
+// DB_Players(_Player)
+// AND
+// DB_TradeTreasureGeneratedSinceLongRest(_Trader)
+// THEN
+// NOT DB_TradeTreasureGeneratedSinceLongRest(_Trader);
+// Goon's Vendor Overhaul end
 
 //Trader dies and trade treasure never generated -> generate
 IF
